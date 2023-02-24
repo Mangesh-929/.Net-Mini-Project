@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CRUDApp.Models.Product>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+        <h1 class="text-center text-primary">Product Record</h1>
+        <a class="btn btn-sm btn-success m-1" asp-controller="Product" asp-action="AddProduct">Add New Product</a>
+        <table class="table table-bordered">
+            <tr class="text-center">
+                <th>ProductId</th>
+                <th>ProductName</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Action</th>
+           </tr>
+           @foreach(var d in Model)
+                {
+                    <tr class="text-center">
+                        <td>@d.productId</td>
+                        <td>@d.productName</td>
+                        <td>@d.price</td>
+                        <td>@d.prodDesc</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" asp-controller="Product" asp-action="UpdateProduct" asp-route-id="@d.productId">Update Product</a>
+                            <a class="btn btn-sm btn-danger" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@d.productId">Delete Product</a>
+
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+</div>
